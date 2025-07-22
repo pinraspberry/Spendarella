@@ -40,6 +40,7 @@ function Button({
   variant,
   size,
   asChild = false,
+  forcedredirectUrl, // destructure to remove from ...props
   ...props
 }) {
   const Comp = asChild ? Slot : "button"
