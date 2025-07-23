@@ -47,6 +47,7 @@ function Button({
 
   return (
     <Comp
+    forcedredirecturl={forcedredirectUrl} // pass it down if needed
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}
       {...props} />
