@@ -44,6 +44,18 @@
 }
 
 :root {
+   --color-spendarella-blush: #fbeaec;
+  --color-spendarella-rose: #ffe5ec;
+  --color-spendarella-orchid: #eecff9;
+  --color-spendarella-lilac: #d8c4f3;
+  --color-spendarella-navy: #2e2e52;
+  --color-spendarella-softgray: #f9f9fb;
+  --color-spendarella-mauve: #b187a3;
+  --color-spendarella-wine: #5a2c49;
+  --color-spendarella-plum: #4a2c4b;
+  --color-spendarella-velvet: #3c1e3f;
+  --color-spendarella-gold: #d4af37;
+  --color-spendarella-navy: #2e2e52;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -128,3 +140,64 @@
   }
 }
 
+.hero-image-wrapper{
+  perspective: 1500px;
+}
+
+.hero-image{
+  transform: rotateX(20deg) scale(1);
+  transition: transform 0.5s ease-out;
+  will-change:transform;
+}
+
+.hero-image.scrolled{
+  transform: rotateX(0deg) scale(1) translateY(40px);
+}
+@layer utilities {
+  .bg-blush { background-color: var(--color-spendarella-blush); }
+  .bg-rose { background-color: var(--color-spendarella-rose); }
+  .bg-lilac { background-color: var(--color-spendarella-lilac); }
+  .bg-mist { background-color: var(--color-spendarella-mist); }
+  .bg-ivory { background-color: var(--color-spendarella-ivory); }
+
+  .bg-mauve { background-color: var(--color-spendarella-mauve); }
+  .bg-wine { background-color: var(--color-spendarella-wine); }
+  .bg-plum { background-color: var(--color-spendarella-plum); }
+  .bg-velvet { background-color: var(--color-spendarella-velvet); }
+  .bg-navy { background-color: var(--color-spendarella-navy); }
+
+  .text-blush { color: var(--color-spendarella-blush); }
+  .text-rose { color: var(--color-spendarella-rose); }
+  .text-lilac { color: var(--color-spendarella-lilac); }
+  .text-mauve { color: var(--color-spendarella-mauve); }
+  .text-wine { color: var(--color-spendarella-wine); }
+  .text-plum { color: var(--color-spendarella-plum); }
+  .text-velvet { color: var(--color-spendarella-velvet); }
+  .text-gold { color: var(--color-spendarella-gold); }
+
+  .border-lilac { border-color: var(--color-spendarella-lilac); }
+  .border-mauve { border-color: var(--color-spendarella-mauve); }
+  .border-gold { border-color: var(--color-spendarella-gold); }
+
+  .hover\:bg-wine:hover { background-color: var(--color-spendarella-wine); }
+  .hover\:bg-rose:hover { background-color: var(--color-spendarella-rose); }
+  .hover\:text-gold:hover { color: var(--color-spendarella-gold); }
+
+  .bg-gradient-spendarella {
+    background: linear-gradient(
+      135deg,
+      var(--color-spendarella-lilac),
+      var(--color-spendarella-mauve),
+      var(--color-spendarella-plum)
+    );
+  }
+}
+@layer base {
+  body {
+    font-family: var(--font-sans), sans-serif;
+  }
+
+  .font-elegant {
+    font-family: 'DM Serif Display', serif;
+  }
+}

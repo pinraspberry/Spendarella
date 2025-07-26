@@ -1,21 +1,44 @@
 
 "use client";
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import React, { useRef } from 'react';
+import { useEffect } from 'react';
+
 const HeroSection = () => {
+  const imageRef =useRef();
+
+  useEffect(()=>{
+    const imageElement=imageRef.current;
+
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const scrollThreshold = 100;
+
+      if(scrollPosition > scrollThreshold) {
+        imageElement.classList.add('scrolled'); // Adjust the divisor for smoother effect
+      }
+      else{
+        imageElement.classList.remove('scrolled');
+      }
+    }; 
+    window.addEventListener('scroll',handleScroll) 
+
+    return () => window.removeEventListener("scroll",handleScroll);
+  },[]);
+
   return (
     <div className='pb-20 px-4'>
       <div className='container mx-auto text-center'>
         <h1 className='text-5xl md:text-8xl lg:text-[105px] pb-6 gradient-title'>
           Manage your finances <br />with Spendarella
         </h1>
-        <p>
-          Meet Spendarella — your glam, AI-powered finance confidante. She’s not just here to help you track expenses or set budgets — she’s here to give your money mindset a glow-up. Whether you’re saving for statement boots or building generational wealth (or both — balance, babe), Spendarella keeps you in control with real-time insights, intuitive budgeting tools, and effortlessly chic financial planning.
-          Think of her as the headliner of your money journey: stylish, smart, and a little bit savage. She doesn’t just optimize your spending — she redefines it.
-          You're not overspending — you're curating. Spendarella just makes sure you’re doing it with intention \(and interest\).
+        <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+          Meet Spendarella — your glam, AI-powered finance confidante. She’s not just here to help you track expenses or set budgets — she’s here to give your money mindset a glow-up. 
         </p>
-        <div>
+        <div className='justify-center space-x-4 flex'>
           <Link href="/dashboard">
             <Button size="lg" className="px-8">
               Get started
@@ -27,8 +50,8 @@ const HeroSection = () => {
             </Button>
           </Link>
         </div>
-        <div>
-          <div>
+        <div className="hero-image-wrapper">
+          <div ref={imageRef} className="hero-image">
             <Image src="/main.jpeg"
               width={1200} height={300}
               alt="Dashboard preview"
